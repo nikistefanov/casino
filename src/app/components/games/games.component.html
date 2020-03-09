@@ -1,0 +1,10 @@
+<ul class="whg-games">
+    <li *ngFor="let game of games" class="whg-game">
+        <!-- <span class="whg-ribbon">{{getJackpot(game.id)}}</span> -->
+        <span class="whg-game__play">
+            <whg-icon name="play" look="size-xl"></whg-icon>
+        </span>
+        <span class="whg-game__title">{{game.name}}</span>
+        <img class="whg-game__image" src="{{game.image}}" alt="" onerror="this.src = '../../../assets/images/placeholder.png'">
+    </li>
+</ul>

@@ -1,0 +1,76 @@
+$game-width: 260px;
+
+.whg-games {
+    display: grid;
+    justify-content: center;
+    row-gap: 1em;
+    column-gap: .5em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.whg-game {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $game-width;
+    height: 150px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    &__title,
+    &__play {
+        position: absolute;
+        display: none;
+    }
+
+    &__title {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        align-items: center;
+        justify-content: center;
+        height: 25%;
+        color: var(--main-invert);
+        text-align: center;
+        text-transform: uppercase;
+        background: rgba(55, 55, 55, .5);;
+    }
+
+    &__play {
+        background-color: rgba(141,198,63, .5);
+        border-radius: 50%;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__image {
+        border-radius: 5px;
+    }
+
+    &:hover {
+
+        .whg-game__title,
+        .whg-game__play {
+            display: flex;
+        }
+    }
+}
+
+@media screen and (min-width: 575px) {
+
+    .whg-games {
+        grid-template-columns: repeat(auto-fit, minmax($game-width, 1fr) );
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    .whg-games {
+        margin-left: 5em;
+        margin-right: 5em;
+    }
+}

@@ -1,6 +1,6 @@
 import { ApiService } from '../api.service';
 import { Observable } from 'rxjs';
-import { IJackpot } from '../../db-models/jackpot';
+import { IJackpot } from '../../../db-models/jackpot';
 
 const BASE_URL = '/jackpots.php';
 

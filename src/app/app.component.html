@@ -1,11 +1,6 @@
-<ng-container *ngIf="!isLoading; else loading">
-    <ul>
-        <li *ngFor="let game of games">
-            {{game.name}}
-            <b>- {{getJackpot(game.id)}}</b>
-        </li>
-    </ul>
-</ng-container>
+<whg-category-filter (categoryChange)="onCategoryChange($event)" [activeCategory]="defaultCategory"></whg-category-filter>
+
+<whg-games *ngIf="!isLoading; else loading" [games]="filteredGames" [jackpots]="jackpots"></whg-games>
 
 <ng-template #loading>
     Loading...

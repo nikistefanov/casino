@@ -1,6 +1,6 @@
 import { ApiService } from '../api.service';
 import { Observable } from 'rxjs';
-import { IGame } from '../../db-models/game';
+import { IGame } from '../../../db-models/game';
 
 const BASE_URL = '/games.php';
 
