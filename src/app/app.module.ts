@@ -8,13 +8,15 @@ import { RouterModule } from '@angular/router';
 import { CategoryFilterComponent } from './components/category-filter/category-filter.component';
 import { GamesComponent } from './components/games/games.component';
 import { IconComponent } from './components/icon/icon.component';
+import { RibbonComponent } from './components/ribbon/ribbon.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         CategoryFilterComponent,
         GamesComponent,
-        IconComponent
+        IconComponent,
+        RibbonComponent
     ],
     imports: [
         BrowserModule,

@@ -1,6 +1,7 @@
 <ul class="whg-games">
     <li *ngFor="let game of games" class="whg-game">
-        <!-- <span class="whg-ribbon">{{getJackpot(game.id)}}</span> -->
+        <whg-ribbon [text]="getRibbonCategory(game.categories)"></whg-ribbon>
+        <span class="whg-game__jackpot">{{getJackpot(game.id)}}</span>
         <span class="whg-game__play">
             <whg-icon name="play" look="size-xl"></whg-icon>
         </span>

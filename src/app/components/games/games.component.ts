@@ -19,4 +19,19 @@ export class GamesComponent {
 
         return null;
     }
+
+    getRibbonCategory(categories: string[]): string {
+        const newCategory = categories.find(c => c === 'new');
+        const topCategory = categories.find(c => c === 'top');
+
+        if (newCategory) {
+            return 'NEW';
+        }
+
+        if (topCategory) {
+            return 'TOP';
+        }
+
+        return null;
+    }
 }

@@ -1,4 +1,5 @@
 $game-width: 260px;
+$game-height: 150px;
 
 .whg-games {
     display: grid;
@@ -17,16 +18,20 @@ $game-width: 260px;
     width: $game-width;
     height: 150px;
     border-radius: 5px;
-    overflow: hidden;
 
+    &__jackpot,
     &__title,
     &__play {
         position: absolute;
+    }
+
+    &__title,
+    &__play {
         display: none;
     }
 
+    &__jackpot,
     &__title {
-        bottom: 0;
         left: 0;
         right: 0;
         align-items: center;
@@ -35,7 +40,21 @@ $game-width: 260px;
         color: var(--main-invert);
         text-align: center;
         text-transform: uppercase;
-        background: rgba(55, 55, 55, .5);;
+        background: rgba(55, 55, 55, .5);
+    }
+
+    &__title {
+        bottom: 0;
+
+    }
+
+    &__jackpot {
+        top: 0;
+        display: flex;
+    }
+
+    &__jackpot:empty {
+        display: none;
     }
 
     &__play {
@@ -48,6 +67,8 @@ $game-width: 260px;
     }
 
     &__image {
+        width: $game-width;
+        height: $game-height;
         border-radius: 5px;
     }
 
