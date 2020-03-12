@@ -9,7 +9,7 @@ import { CategoryFilterComponent } from './components/category-filter/category-f
 import { GamesComponent } from './components/games/games.component';
 import { IconComponent } from './components/icon/icon.component';
 import { RibbonComponent } from './components/ribbon/ribbon.component';
-import { RibbonWrapperComponent } from './components/ribbon/ribbon-wrapper.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
     declarations: [
@@ -17,8 +17,8 @@ import { RibbonWrapperComponent } from './components/ribbon/ribbon-wrapper.compo
         CategoryFilterComponent,
         GamesComponent,
         IconComponent,
-        RibbonWrapperComponent,
-        RibbonComponent
+        RibbonComponent,
+        LoaderComponent
     ],
     imports: [
         BrowserModule,

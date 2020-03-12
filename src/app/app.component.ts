@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { interval, Subscription, Observable } from 'rxjs';
+import { interval, Subscription, Observable, timer } from 'rxjs';
 import { startWith, switchMapTo, delay } from 'rxjs/operators';
 import { IJackpot } from '../db-models/jackpot';
 import { IGame } from '../db-models/game';
@@ -15,6 +15,7 @@ const REQUEST_INTERVAL = 1000;
 })
 export class AppComponent implements OnInit, OnDestroy {
     isLoading = true;
+    isGamesLoading = false;
     jackpots: IJackpot[] = [];
     categories: ICategory[] = [];
     filteredGames: IGame[] = [];
@@ -40,10 +41,14 @@ export class AppComponent implements OnInit, OnDestroy {
             return;
         }
 
-        this.activeCategory = category;
-        this.filteredGames = this.filterGames(category);
-        console.log('filtered: ', this.filteredGames.length);
+        this.isGamesLoading = true;
 
+        timer(REQUEST_INTERVAL / 2).subscribe(() => {
+            this.activeCategory = category;
+            this.filteredGames = this.filterGames(category);
+
+            this.isGamesLoading = false;
+        });
     }
 
     private getGames(): void {
@@ -93,17 +98,12 @@ export class AppComponent implements OnInit, OnDestroy {
         if (category.id === OTHER_CATEGORY_ID) {
             return this.games.filter(g => {
                 let categoryFound = false;
-                g.categories.forEach(gc => {
-                    this.categories.forEach(c => {
-                        if (c.id === gc) {
-                            categoryFound = true;
-                        }
-                    });
-                });
+                g.categories.forEach(gc => categoryFound = this.categories.some(c => c.id === gc));
 
                 return !categoryFound;
             });
         }
+
         return this.games.filter(g => g.categories.indexOf(category.id) > -1);
     }
 }

@@ -31,10 +31,7 @@ export class CategoryFilterComponent implements OnInit, OnDestroy {
     }
 
     private getCategories() {
-        this.categoriesSubscription = this.rootService.categories.get().pipe(
-            delay(500)
-        )
-        .subscribe((categories: ICategory[]) => {
+        this.categoriesSubscription = this.rootService.categories.get().subscribe((categories: ICategory[]) => {
             this.categories = categories;
         });
     }

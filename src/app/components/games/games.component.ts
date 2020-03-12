@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IGame } from '../../../db-models/game';
 import { IJackpot } from '../../../db-models/jackpot';
 import { ICategory } from '../../../db-models/category';
-import { IRibbonData } from '../ribbon/ribbon-wrapper.component';
+import { IRibbonData } from '../ribbon/ribbon.component';
 import { NEW_CATEGORY_ID, TOP_CATEGORY_ID } from '../../http/services/category.service';
 
 @Component({
@@ -52,18 +52,4 @@ export class GamesComponent implements OnChanges {
 
         return null;
     }
-
-    // private applyRibbonData(activeCategory: ICategory) {
-    //     this.showRibbon = activeCategory.id !== NEW_CATEGORY_RIBBON_ID && activeCategory.id !== TOP_CATEGORY_RIBBON_ID;
-
-    //     if (this.showRibbon) {
-    //         const isNewCategory = this.categories.some(c => c === NEW_CATEGORY_RIBBON_ID);
-
-    //         this.ribbonText = isNewCategory ? NEW_CATEGORY_RIBBON_ID : TOP_CATEGORY_RIBBON_ID;
-    //         this.ribbonLook = isNewCategory ? '' : 'light';
-    //     }
-
-    //     console.log('applied');
-
-    // }
 }

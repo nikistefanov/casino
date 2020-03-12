@@ -1,3 +1,3 @@
-<div [ngClass]="ribbonClass">
-    <span class="whg-ribbon__text">{{text}}</span>
+<div *ngIf="data && data.visible" [ngClass]="ribbonClass">
+    <span class="whg-ribbon__text">{{data.text}}</span>
 </div>

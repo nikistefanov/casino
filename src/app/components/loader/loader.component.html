@@ -1,0 +1,12 @@
+<div [ngClass]="loaderClassList">
+    <ng-container *ngTemplateOutlet="loaderType;"></ng-container>
+</div>
+
+<ng-template #home>
+    <div class="whg-loader__nav"></div>
+    <div class="whg-loader__content"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</ng-template>
+
+<ng-template #game>
+    <div class="whg-loader__content"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</ng-template>
