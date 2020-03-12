@@ -1,0 +1,33 @@
+.whg-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 150px;
+    border: .5px solid var(--main);
+    border-radius: 5px;
+    background-color: var(--main-invert);
+
+    &__top-symbol,
+    &__bottom-symbol {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__top-symbol {
+        top: 5px;
+        left: 5px;
+    }
+
+    &__bottom-symbol {
+        bottom: 5px;
+        right: 5px;
+
+        .whg-card__symbol {
+            transform: rotate(-180deg);
+        }
+    }
+}

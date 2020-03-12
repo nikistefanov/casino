@@ -1,0 +1,20 @@
+.-whg-flex {
+    display: flex;
+}
+
+.-whg-center-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.-whg-direction-col {
+    flex-direction: column;
+}
+
+.-whg-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word;
+}

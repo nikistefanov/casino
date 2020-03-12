@@ -5,11 +5,16 @@
         <span class="whg-game__play">
             <whg-icon name="play" look="size-xl"></whg-icon>
         </span>
-        <span class="whg-game__title">{{game.name}}</span>
+        <span class="whg-game__title">
+            <span class="-whg-ellipsis" [title]="game.name">{{game.name}}</span>
+        </span>
         <img class="whg-game__image" src="{{game.image}}" alt="" onerror="this.src = '../../../assets/images/placeholder.png'">
     </li>
 </ul>
 
 <ng-template #noResults>
-    No items
+    <div class="-whg-center-box -whg-direction-col">
+        <whg-card></whg-card>
+        <h2>No games found for category: {{activeCategory.name}}</h2>
+    </div>
 </ng-template>

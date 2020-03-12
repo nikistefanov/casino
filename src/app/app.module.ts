@@ -9,6 +9,7 @@ import { GamesComponent } from './components/games/games.component';
 import { IconComponent } from './components/icon/icon.component';
 import { RibbonComponent } from './components/ribbon/ribbon.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { LoaderComponent } from './components/loader/loader.component';
         GamesComponent,
         IconComponent,
         RibbonComponent,
-        LoaderComponent
+        LoaderComponent,
+        CardComponent
     ],
     imports: [
         BrowserModule,

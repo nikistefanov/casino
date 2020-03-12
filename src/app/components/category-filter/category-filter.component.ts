@@ -11,7 +11,9 @@ import { delay } from 'rxjs/operators';
 export class CategoryFilterComponent implements OnInit, OnDestroy {
     @Input() activeCategory: ICategory;
     @Output() categoryChange: EventEmitter<ICategory> = new EventEmitter<ICategory>();
+
     categories: ICategory[];
+    expanded = false;
 
     private categoriesSubscription: Subscription;
 
@@ -26,6 +28,7 @@ export class CategoryFilterComponent implements OnInit, OnDestroy {
     }
 
     onCategoryClick(category: ICategory) {
+        this.expanded = false;
         this.activeCategory = category;
         this.categoryChange.emit(category);
     }
