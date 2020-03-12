@@ -45,6 +45,10 @@ const CATEGORIES: ICategory[] = [
     }
 ];
 
+export const TOP_CATEGORY_ID = 'top';
+export const NEW_CATEGORY_ID = 'new';
+export const OTHER_CATEGORY_ID = 'other';
+
 export class CategoryService extends ApiService {
     get(): Observable<ICategory[]> {
         return of(CATEGORIES);

@@ -1,14 +1,26 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IGame } from '../../../db-models/game';
 import { IJackpot } from '../../../db-models/jackpot';
+import { ICategory } from '../../../db-models/category';
+import { IRibbonData } from '../ribbon/ribbon-wrapper.component';
+import { NEW_CATEGORY_ID, TOP_CATEGORY_ID } from '../../http/services/category.service';
 
 @Component({
     selector: 'whg-games',
     templateUrl: './games.component.html'
 })
-export class GamesComponent {
+export class GamesComponent implements OnChanges {
     @Input() games: IGame[];
     @Input() jackpots: IJackpot[];
+    @Input() activeCategory: ICategory;
+
+    ngOnChanges(changes: SimpleChanges) {
+        const gamesChange = changes.games;
+
+        if (gamesChange && !gamesChange.isFirstChange()) {
+            console.log(changes);
+        }
+    }
 
     getJackpot(id: string): number {
         const jackpot = this.jackpots.find(j => j.game === id);
@@ -20,18 +32,38 @@ export class GamesComponent {
         return null;
     }
 
-    getRibbonCategory(categories: string[]): string {
-        const newCategory = categories.find(c => c === 'new');
-        const topCategory = categories.find(c => c === 'top');
+    setRibbonData(categories: string[]) {
+        const notTopOrNewCategoryActive = this.activeCategory.id !== NEW_CATEGORY_ID && this.activeCategory.id !== TOP_CATEGORY_ID;
+        const hasNewCategory = categories.some(c => c === NEW_CATEGORY_ID);
+        const hasTopCategory = categories.some(c => c === TOP_CATEGORY_ID);
+        const visible = notTopOrNewCategoryActive && (hasNewCategory || hasTopCategory);
 
-        if (newCategory) {
-            return 'NEW';
-        }
+        if (visible) {
+            const text = hasNewCategory ? NEW_CATEGORY_ID : TOP_CATEGORY_ID;
+            const look = hasNewCategory ? '' : 'light';
+            const ribbonData: IRibbonData = {
+                visible,
+                text,
+                look
+            };
 
-        if (topCategory) {
-            return 'TOP';
+            return ribbonData;
         }
 
         return null;
     }
+
+    // private applyRibbonData(activeCategory: ICategory) {
+    //     this.showRibbon = activeCategory.id !== NEW_CATEGORY_RIBBON_ID && activeCategory.id !== TOP_CATEGORY_RIBBON_ID;
+
+    //     if (this.showRibbon) {
+    //         const isNewCategory = this.categories.some(c => c === NEW_CATEGORY_RIBBON_ID);
+
+    //         this.ribbonText = isNewCategory ? NEW_CATEGORY_RIBBON_ID : TOP_CATEGORY_RIBBON_ID;
+    //         this.ribbonLook = isNewCategory ? '' : 'light';
+    //     }
+
+    //     console.log('applied');
+
+    // }
 }

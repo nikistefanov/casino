@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { ActiveCategoryService } from './services/active-category.service';
+import { RibbonDirective } from './directives/ribbon.directive';
 
 
 @NgModule({
     providers: [
-        ActiveCategoryService
+        RibbonDirective
     ]
 })
 export class SharedModule {}

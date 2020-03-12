@@ -1,6 +1,6 @@
-<whg-category-filter (categoryChange)="onCategoryChange($event)" [activeCategory]="defaultCategory"></whg-category-filter>
+<whg-category-filter (categoryChange)="onCategoryChange($event)" [activeCategory]="activeCategory"></whg-category-filter>
 
-<whg-games *ngIf="!isLoading; else loading" [games]="filteredGames" [jackpots]="jackpots"></whg-games>
+<whg-games *ngIf="!isLoading; else loading" [games]="filteredGames" [jackpots]="jackpots" [activeCategory]="activeCategory"></whg-games>
 
 <ng-template #loading>
     Loading...
