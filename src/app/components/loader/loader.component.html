@@ -4,7 +4,7 @@
 
 <ng-template #home>
     <div class="whg-loader__nav"></div>
-    <div class="whg-loader__content"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <ng-container *ngTemplateOutlet="game"></ng-container>
 </ng-template>
 
 <ng-template #game>

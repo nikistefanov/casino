@@ -104,6 +104,14 @@ export class AppComponent implements OnInit, OnDestroy {
             });
         }
 
-        return this.games.filter(g => g.categories.indexOf(category.id) > -1);
+        const fil = this.games.filter(g => {
+            if (g.categories && g.categories.indexOf(category.id) > -1) {
+                return true;
+            }
+
+            return false;
+        });
+
+        return fil;
     }
 }

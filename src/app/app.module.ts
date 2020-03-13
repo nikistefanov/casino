@@ -10,6 +10,7 @@ import { IconComponent } from './components/icon/icon.component';
 import { RibbonComponent } from './components/ribbon/ribbon.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { CardComponent } from './components/card/card.component';
+import { RibbonWrapperComponent } from './components/ribbon/ribbon-wrapper.component';
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { CardComponent } from './components/card/card.component';
         GamesComponent,
         IconComponent,
         RibbonComponent,
+        RibbonWrapperComponent,
         LoaderComponent,
         CardComponent
     ],

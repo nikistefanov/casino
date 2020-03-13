@@ -18,6 +18,7 @@ $game-height: 150px;
     width: $game-width;
     height: 150px;
     border-radius: 5px;
+    background-color: var(--grey);
 
     &__jackpot,
     &__title,

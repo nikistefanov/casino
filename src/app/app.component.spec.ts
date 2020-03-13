@@ -1,31 +1,41 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, fakeAsync, tick } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { CategoryFilterComponent } from './components/category-filter/category-filter.component';
+import { GamesComponent } from './components/games/games.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { IconComponent } from './components/icon/icon.component';
+import { RibbonComponent } from './components/ribbon/ribbon.component';
+import { CardComponent } from './components/card/card.component';
+import { RootService } from './http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { rootServiceMock } from '../test-helpers/mocks';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                HttpClientTestingModule
+            ],
+            declarations: [
+                AppComponent,
+                CategoryFilterComponent,
+                GamesComponent,
+                LoaderComponent,
+                IconComponent,
+                RibbonComponent,
+                CardComponent
+            ],
+            providers: [
+                { provide: RootService, useValue: rootServiceMock }
+            ]
+        }).compileComponents();
+    }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    it('should create the app', fakeAsync(() => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.debugElement.componentInstance;
 
-  it(`should have as title 'casino'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('casino');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to casino!');
-  });
+        fixture.detectChanges();
+        expect(app).toBeTruthy();
+    }));
 });

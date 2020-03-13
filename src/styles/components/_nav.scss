@@ -1,12 +1,15 @@
 $spacing: .5em;
 
 .whg-nav {
+    position: sticky;
+    top: 0;
     min-height: 3em;
     display: flex;
     flex-direction: column;
     font-size: 1.1em;
     margin-bottom: 2em;
     background-color: var(--main);
+    z-index: 100;
 
     &__links {
         display: none;
