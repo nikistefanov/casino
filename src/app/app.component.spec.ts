@@ -1,7 +1,7 @@
 import { TestBed, async, fakeAsync, tick } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { CategoryFilterComponent } from './components/category-filter/category-filter.component';
-import { GamesComponent } from './components/games/games.component';
+import { GameComponent } from './components/game/game.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { IconComponent } from './components/icon/icon.component';
 import { RibbonComponent } from './components/ribbon/ribbon.component';
@@ -19,7 +19,7 @@ describe('AppComponent', () => {
             declarations: [
                 AppComponent,
                 CategoryFilterComponent,
-                GamesComponent,
+                GameComponent,
                 LoaderComponent,
                 IconComponent,
                 RibbonComponent,

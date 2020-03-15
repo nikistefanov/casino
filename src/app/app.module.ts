@@ -5,19 +5,20 @@ import { HttpModule } from './http';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { CategoryFilterComponent } from './components/category-filter/category-filter.component';
-import { GamesComponent } from './components/games/games.component';
+import { GameComponent } from './components/game/game.component';
 import { IconComponent } from './components/icon/icon.component';
 import { RibbonComponent } from './components/ribbon/ribbon.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { CardComponent } from './components/card/card.component';
 import { RibbonWrapperComponent } from './components/ribbon/ribbon-wrapper.component';
 import { ActiveCategoryService } from './services/active-category.service';
+import { appRouting } from './app.routes';
 
 @NgModule({
     declarations: [
         AppComponent,
         CategoryFilterComponent,
-        GamesComponent,
+        GameComponent,
         IconComponent,
         RibbonComponent,
         RibbonWrapperComponent,
@@ -27,7 +28,8 @@ import { ActiveCategoryService } from './services/active-category.service';
     imports: [
         BrowserModule,
         HttpClientModule,
-        HttpModule
+        HttpModule,
+        appRouting
     ],
     providers: [ActiveCategoryService],
     bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 <ng-container *ngIf="!isLoading; else loading">
     <whg-category-filter (categoryChange)="onCategoryChange($event)"></whg-category-filter>
 
-    <whg-games *ngIf="!isGamesLoading; else gameLoading" [games]="filteredGames" [jackpots]="jackpots"></whg-games>
+    <whg-game *ngIf="!isGamesLoading; else gameLoading" [games]="filteredGames" [jackpots]="jackpots"></whg-game>
 </ng-container>
 
 <ng-template #loading>

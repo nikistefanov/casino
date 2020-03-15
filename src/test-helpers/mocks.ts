@@ -35,7 +35,7 @@ export const TOP_GAMES = [{
     id: 'NEGONZOSQUEST'
 }];
 
-export const OTHER_GAMES = [[
+export const OTHER_GAMES = [
     {
         categories: [
             'classic'
@@ -52,9 +52,9 @@ export const OTHER_GAMES = [[
         image: '//stage.whgstage.com/scontent/images/games/BSCRAPS.jpg',
         id: 'BSCRAPS'
     }
-]];
+];
 
-export const JACKPOTS = [[
+export const JACKPOTS = [
     {
         game: 'NEJACKANDTHEBEANSTALK',
         amount: 104507
@@ -63,7 +63,7 @@ export const JACKPOTS = [[
         game: 'LEPABLOPICASSOSLOT',
         amount: 50163
     }
-]];
+];
 
 export const NEW_CATEGORY = {
     id: 'top',

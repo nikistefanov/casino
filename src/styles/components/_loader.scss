@@ -44,7 +44,7 @@
 @media screen and (min-width: 575px) {
 
     .whg-loader .whg-loader__content {
-        grid-template-columns: repeat(auto-fit, minmax($game-card-width, 1fr) );
+        grid-template-columns: repeat(auto-fit, minmax($game-width, 1fr) );
     }
 }
 
