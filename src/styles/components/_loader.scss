@@ -9,23 +9,22 @@
         left: 0;
         flex-direction: column;
         background-color: var(--main-invert);
-
-        .whg-loader__nav {
-            display: block;
-            height: 3em;
-            margin-bottom: 2em;
-            width: 100%;
-            background-color: var(--grey);
-            animation: pulse 1s infinite ease-in-out;
-        }
-
     }
 
     &.-game {
         flex-direction: column;
     }
 
-    .whg-loader__content {
+    &__nav {
+        display: block;
+        height: 3em;
+        margin-bottom: 2em;
+        width: 100%;
+        background-color: var(--grey);
+        animation: pulse 1s infinite ease-in-out;
+    }
+
+    &__content {
         display: grid;
         row-gap: 1em;
         column-gap: .5em;

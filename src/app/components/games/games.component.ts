@@ -1,7 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IGame } from '../../../db-models/game';
 import { IJackpot } from '../../../db-models/jackpot';
-import { ICategory } from '../../../db-models/category';
 
 @Component({
     selector: 'whg-games',
@@ -10,7 +9,6 @@ import { ICategory } from '../../../db-models/category';
 export class GamesComponent implements OnChanges {
     @Input() games: IGame[];
     @Input() jackpots: IJackpot[];
-    @Input() activeCategory: ICategory;
 
     ngOnChanges(changes: SimpleChanges) {
         const gamesChange = changes.games;

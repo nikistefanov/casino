@@ -9,7 +9,7 @@ import { delay } from 'rxjs/operators';
     templateUrl: './category-filter.component.html'
 })
 export class CategoryFilterComponent implements OnInit, OnDestroy {
-    @Input() activeCategory: ICategory;
+    @Input() activeCategoryId: string;
     @Output() categoryChange: EventEmitter<ICategory> = new EventEmitter<ICategory>();
 
     categories: ICategory[];
@@ -29,7 +29,7 @@ export class CategoryFilterComponent implements OnInit, OnDestroy {
 
     onCategoryClick(category: ICategory) {
         this.expanded = false;
-        this.activeCategory = category;
+        this.activeCategoryId = category.id;
         this.categoryChange.emit(category);
     }
 

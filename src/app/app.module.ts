@@ -11,6 +11,7 @@ import { RibbonComponent } from './components/ribbon/ribbon.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { CardComponent } from './components/card/card.component';
 import { RibbonWrapperComponent } from './components/ribbon/ribbon-wrapper.component';
+import { ActiveCategoryService } from './services/active-category.service';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,7 @@ import { RibbonWrapperComponent } from './components/ribbon/ribbon-wrapper.compo
         HttpClientModule,
         HttpModule
     ],
-    providers: [],
+    providers: [ActiveCategoryService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

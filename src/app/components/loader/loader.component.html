@@ -3,8 +3,12 @@
 </div>
 
 <ng-template #home>
-    <div class="whg-loader__nav"></div>
+    <ng-container *ngTemplateOutlet="nav"></ng-container>
     <ng-container *ngTemplateOutlet="game"></ng-container>
+</ng-template>
+
+<ng-template #nav>
+    <div class="whg-loader__nav"></div>
 </ng-template>
 
 <ng-template #game>
