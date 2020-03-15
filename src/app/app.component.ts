@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { interval, Subscription, Observable, timer } from 'rxjs';
+import { interval, Subscription, of, timer } from 'rxjs';
 import { startWith, switchMapTo, delay } from 'rxjs/operators';
 import { IJackpot } from '../db-models/jackpot';
 import { IGame } from '../db-models/game';
@@ -19,10 +19,9 @@ export class AppComponent implements OnInit, OnDestroy {
     jackpots: IJackpot[] = [];
     categories: ICategory[] = [];
     filteredGames: IGame[] = [];
-    activeCategory: ICategory;
 
     private games: IGame[] = [];
-    private dataSubscriptions: Subscription[] = [];
+    private subscriptions: Subscription[] = [];
 
     constructor(private rootService: RootService) { }
 
@@ -33,19 +32,14 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.dataSubscriptions.forEach(sub => sub.unsubscribe());
+        this.subscriptions.forEach(sub => sub.unsubscribe());
     }
 
     onCategoryChange(category: ICategory) {
-        if (category.id === this.activeCategory.id) {
-            return;
-        }
-
         this.isGamesLoading = true;
 
         timer(REQUEST_INTERVAL / 2).subscribe(() => {
-            this.activeCategory = category;
-            this.filteredGames = this.filterGames(category);
+            this.filteredGames = this.filterGames(category.id);
 
             this.isGamesLoading = false;
         });
@@ -56,12 +50,11 @@ export class AppComponent implements OnInit, OnDestroy {
             delay(REQUEST_INTERVAL)
         ).subscribe((games: IGame[]) => {
             this.games = games;
-            this.getDefaultCategory();
 
             this.isLoading = false;
         });
 
-        this.dataSubscriptions.push(gameSubscription);
+        this.subscriptions.push(gameSubscription);
     }
 
     private getJackpots(): void {
@@ -73,7 +66,7 @@ export class AppComponent implements OnInit, OnDestroy {
                 this.jackpots = jackpots;
             });
 
-        this.dataSubscriptions.push(jackpotSubscription);
+        this.subscriptions.push(jackpotSubscription);
     }
 
     private getCategories(): void {
@@ -81,21 +74,11 @@ export class AppComponent implements OnInit, OnDestroy {
             this.categories = categories;
         });
 
-        this.dataSubscriptions.push(categoriesSubscription);
+        this.subscriptions.push(categoriesSubscription);
     }
 
-    private getDefaultCategory() {
-        const defaultCategorySubscription = this.rootService.categories.getDefault().subscribe((category: ICategory) => {
-            this.activeCategory = category;
-
-            this.filteredGames = this.filterGames(category);
-        });
-
-        this.dataSubscriptions.push(defaultCategorySubscription);
-    }
-
-    private filterGames(category: ICategory): IGame[] {
-        if (category.id === OTHER_CATEGORY_ID) {
+    private filterGames(categoryId: string): IGame[] {
+        if (categoryId === OTHER_CATEGORY_ID) {
             return this.games.filter(g => {
                 let categoryFound = false;
                 g.categories.forEach(gc => categoryFound = this.categories.some(c => c.id === gc));
@@ -105,7 +88,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
 
         const fil = this.games.filter(g => {
-            if (g.categories && g.categories.indexOf(category.id) > -1) {
+            if (g.categories && g.categories.indexOf(categoryId) > -1) {
                 return true;
             }
 

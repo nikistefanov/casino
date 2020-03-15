@@ -1,4 +1,4 @@
-<nav *ngIf="categories && activeCategory; else loading" class="whg-nav" [ngClass]="{'-expanded': expanded}">
+<nav *ngIf="categories; else loading" class="whg-nav" [ngClass]="{'-expanded': expanded}">
     <whg-icon class="whg-nav__toggle" name="bar" look="size-xl" (click)="expanded = !expanded"></whg-icon>
     <ul class="whg-nav__links">
         <li
@@ -10,5 +10,5 @@
 </nav>
 
 <ng-template #loading>
-    Loading...
+    <whg-loader type="nav"></whg-loader>
 </ng-template>

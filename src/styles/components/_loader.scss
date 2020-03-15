@@ -1,16 +1,7 @@
 .whg-loader {
     display: flex;
-
-    &.-home {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        flex-direction: column;
-        background-color: var(--main-invert);
-
-    }
+    flex-direction: column;
+    background-color: var(--main-invert);
 
     &.-game {
         flex-direction: column;
@@ -18,23 +9,20 @@
 
     &__nav {
         display: block;
-        height: 3em;
-        margin-bottom: 2em;
+        height: $nav-height;
+        margin-bottom: $nav-margin-bottom;
         width: 100%;
         background-color: var(--grey);
         animation: pulse 1s infinite ease-in-out;
     }
 
     &__content {
-        display: grid;
-        row-gap: 1em;
-        column-gap: .5em;
-        margin-left: 1em;
-        margin-right: 1em;
+        @extend %games-grid;
 
         div {
-            height: $game-card-width;
-            height: $game-card-height;
+            width: $game-width;
+            height: $game-height;
+            border-radius: $game-border-radius;
             background-color: var(--grey);
             animation: pulse 1s infinite ease-in-out;
         }
@@ -63,7 +51,7 @@
 @media screen and (min-width: 768px) {
 
     .whg-loader .whg-loader__content {
-        margin-left: 5em;
-        margin-right: 5em;
+        margin-left: $games-grid-large-margin;
+        margin-right: $games-grid-large-margin;
     }
 }

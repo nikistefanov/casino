@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ICategory } from '../../../db-models/category';
 import { NEW_CATEGORY_ID, TOP_CATEGORY_ID } from '../../http/services/category.service';
+import { ActiveCategoryService } from '../../services/active-category.service';
 
 @Component({
     selector: 'whg-ribbon-wrapper',
@@ -8,22 +8,23 @@ import { NEW_CATEGORY_ID, TOP_CATEGORY_ID } from '../../http/services/category.s
 })
 export class RibbonWrapperComponent implements OnInit {
     @Input() categories: string[];
-    @Input() activeCategory: ICategory;
 
     ribbonText: string;
     ribbonLook: string;
     ribbonVisible = false;
 
+    constructor(private activeCategoryService: ActiveCategoryService) {}
+
     ngOnInit() {
-        this.setRibbonData();
+        this.activeCategoryService.activeCategoryId.subscribe(activeCategoryId => this.setRibbonData(activeCategoryId));
     }
 
-    private setRibbonData() {
+    private setRibbonData(activeCategoryId: string) {
         if (!this.categories.length) {
             return;
         }
 
-        const notTopOrNewCategoryActive = this.activeCategory.id !== NEW_CATEGORY_ID && this.activeCategory.id !== TOP_CATEGORY_ID;
+        const notTopOrNewCategoryActive = activeCategoryId !== NEW_CATEGORY_ID && activeCategoryId !== TOP_CATEGORY_ID;
         const hasNewCategory = this.categories.some(c => c === NEW_CATEGORY_ID);
         const hasTopCategory = this.categories.some(c => c === TOP_CATEGORY_ID);
         this.ribbonVisible = notTopOrNewCategoryActive && (hasNewCategory || hasTopCategory);
