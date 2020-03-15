@@ -10,32 +10,31 @@
         flex-direction: column;
         background-color: var(--main-invert);
 
-        .whg-loader__nav {
-            display: block;
-            height: 3em;
-            margin-bottom: 2em;
-            width: 100%;
-            background-color: var(--grey);
-            animation: pulse 1s infinite ease-in-out;
-        }
-
     }
 
     &.-game {
         flex-direction: column;
     }
 
-    .whg-loader__content {
+    &__nav {
+        display: block;
+        height: 3em;
+        margin-bottom: 2em;
+        width: 100%;
+        background-color: var(--grey);
+        animation: pulse 1s infinite ease-in-out;
+    }
+
+    &__content {
         display: grid;
         row-gap: 1em;
         column-gap: .5em;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr) );
         margin-left: 1em;
         margin-right: 1em;
 
         div {
-            height: 260px;
-            height: 150px;
+            height: $game-card-width;
+            height: $game-card-height;
             background-color: var(--grey);
             animation: pulse 1s infinite ease-in-out;
         }
@@ -57,7 +56,7 @@
 @media screen and (min-width: 575px) {
 
     .whg-loader .whg-loader__content {
-        grid-template-columns: repeat(auto-fit, minmax($game-width, 1fr) );
+        grid-template-columns: repeat(auto-fit, minmax($game-card-width, 1fr) );
     }
 }
 

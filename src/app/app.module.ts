@@ -25,7 +25,6 @@ import { RibbonWrapperComponent } from './components/ribbon/ribbon-wrapper.compo
     ],
     imports: [
         BrowserModule,
-        RouterModule.forRoot([]),
         HttpClientModule,
         HttpModule
     ],
