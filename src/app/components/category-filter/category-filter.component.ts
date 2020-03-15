@@ -39,11 +39,11 @@ export class CategoryFilterComponent implements OnInit, OnDestroy {
     }
 
     private getCategories() {
-        combineLatest(
+        this.categoriesSubscription = combineLatest(
             this.rootService.categories.get(),
             this.rootService.categories.getDefault()
         ).subscribe(([categories, defaultCategory]) => {
-            this.categories = categories;
+            this.categories = categories || [];
             this.onCategoryClick(defaultCategory);
         });
     }

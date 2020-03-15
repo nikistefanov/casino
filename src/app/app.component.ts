@@ -49,7 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
         const gameSubscription = this.rootService.games.get().pipe(
             delay(REQUEST_INTERVAL)
         ).subscribe((games: IGame[]) => {
-            this.games = games;
+            this.games = games || [];
 
             this.isLoading = false;
         });
@@ -63,7 +63,7 @@ export class AppComponent implements OnInit, OnDestroy {
             switchMapTo(this.rootService.jackpots.get())
         )
             .subscribe((jackpots: IJackpot[]) => {
-                this.jackpots = jackpots;
+                this.jackpots = jackpots || [];
             });
 
         this.subscriptions.push(jackpotSubscription);
