@@ -1,0 +1,13 @@
+$game-width: 260px;
+$game-height: 150px;
+$game-border-radius: 5px;
+$games-grid-large-margin: 5em;
+
+%games-grid {
+    display: grid;
+    justify-content: center;
+    row-gap: 1em;
+    column-gap: .5em;
+    margin-left: 1em;
+    margin-right: 1em;
+}

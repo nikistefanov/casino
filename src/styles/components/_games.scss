@@ -1,13 +1,5 @@
-$game-width: 260px;
-$game-height: 150px;
-
 .whg-games {
-    display: grid;
-    justify-content: center;
-    row-gap: 1em;
-    column-gap: .5em;
-    margin-left: 1em;
-    margin-right: 1em;
+    @extend %games-grid;
 }
 
 .whg-game {
@@ -16,8 +8,8 @@ $game-height: 150px;
     align-items: center;
     justify-content: center;
     width: $game-width;
-    height: 150px;
-    border-radius: 5px;
+    height: $game-height;
+    border-radius: $game-border-radius;
     background-color: var(--grey);
 
     &__jackpot,
@@ -70,7 +62,7 @@ $game-height: 150px;
     &__image {
         width: $game-width;
         height: $game-height;
-        border-radius: 5px;
+        border-radius: $game-border-radius;
     }
 
     &:hover {
@@ -92,7 +84,7 @@ $game-height: 150px;
 @media screen and (min-width: 768px) {
 
     .whg-games {
-        margin-left: 5em;
-        margin-right: 5em;
+        margin-left: $games-grid-large-margin;
+        margin-right: $games-grid-large-margin;
     }
 }

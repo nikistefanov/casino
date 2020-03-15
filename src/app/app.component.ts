@@ -1,15 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { interval, Subscription } from 'rxjs';
+import { interval, Subscription, of, timer } from 'rxjs';
 import { startWith, switchMapTo, delay } from 'rxjs/operators';
 import { IJackpot } from '../db-models/jackpot';
 import { IGame } from '../db-models/game';
 import { RootService } from './http';
 import { ICategory } from '../db-models/category';
 import { OTHER_CATEGORY_ID } from './http/services/category.service';
-import { ActiveCategoryService } from './services/active-category.service';
 
 const REQUEST_INTERVAL = 1000;
-const CATEGORY_PARAM = 'category';
 
 @Component({
     selector: 'whg-root',
@@ -21,18 +19,16 @@ export class AppComponent implements OnInit, OnDestroy {
     jackpots: IJackpot[] = [];
     categories: ICategory[] = [];
     filteredGames: IGame[] = [];
-    activeCategoryId: string;
 
     private games: IGame[] = [];
     private subscriptions: Subscription[] = [];
 
-    constructor(private rootService: RootService, private activeCategoryService: ActiveCategoryService) { }
+    constructor(private rootService: RootService) { }
 
     ngOnInit() {
         this.getGames();
         this.getJackpots();
         this.getCategories();
-        this.subscribeToCategoryChange();
     }
 
     ngOnDestroy() {
@@ -40,18 +36,10 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     onCategoryChange(category: ICategory) {
-        if (category.id === this.activeCategoryId) {
-            return;
-        }
-
-        this.activeCategoryService.setActiveCategory(category.id);
-    }
-
-    private subscribeToCategoryChange() {
         this.isGamesLoading = true;
 
-        this.activeCategoryService.activeCategoryId.subscribe(activeCategoryId => {
-            this.filteredGames = this.filterGames(activeCategoryId);
+        timer(REQUEST_INTERVAL / 2).subscribe(() => {
+            this.filteredGames = this.filterGames(category.id);
 
             this.isGamesLoading = false;
         });

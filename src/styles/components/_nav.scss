@@ -1,13 +1,11 @@
-$spacing: .5em;
-
 .whg-nav {
     position: sticky;
     top: 0;
-    min-height: 3em;
     display: flex;
     flex-direction: column;
+    min-height: 3em;
+    margin-bottom: $nav-margin-bottom;
     font-size: 1.1em;
-    margin-bottom: 2em;
     background-color: var(--main);
     z-index: 100;
 
@@ -22,7 +20,7 @@ $spacing: .5em;
         display: flex;
         justify-content: center;
         color: var(--main-invert);
-        margin-bottom: $spacing;
+        margin-bottom: $nav-spacing;
 
         &:hover {
             cursor: pointer;
@@ -66,10 +64,10 @@ $spacing: .5em;
             display: flex;
             align-items: center;
             margin-bottom: 0;
-            margin-left: $spacing;
-            margin-right: $spacing;
-            padding-left: $spacing;
-            padding-right: $spacing;
+            margin-left: $nav-spacing;
+            margin-right: $nav-spacing;
+            padding-left: $nav-spacing;
+            padding-right: $nav-spacing;
         }
     }
 }

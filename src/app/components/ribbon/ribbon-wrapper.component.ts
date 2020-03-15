@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ICategory } from '../../../db-models/category';
 import { NEW_CATEGORY_ID, TOP_CATEGORY_ID } from '../../http/services/category.service';
 import { ActiveCategoryService } from '../../services/active-category.service';
 

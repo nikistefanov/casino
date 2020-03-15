@@ -1,11 +1,11 @@
-<nav *ngIf="categories && activeCategoryId; else loading" class="whg-nav" [ngClass]="{'-expanded': expanded}">
+<nav *ngIf="categories; else loading" class="whg-nav" [ngClass]="{'-expanded': expanded}">
     <whg-icon class="whg-nav__toggle" name="bar" look="size-xl" (click)="expanded = !expanded"></whg-icon>
     <ul class="whg-nav__links">
         <li
             *ngFor="let category of categories"
             (click)="onCategoryClick(category)"
             class="whg-nav__link"
-            [ngClass]="{'-active': activeCategoryId === category.id}">{{category.name}}</li>
+            [ngClass]="{'-active': activeCategory.id === category.id}">{{category.name}}</li>
     </ul>
 </nav>
 

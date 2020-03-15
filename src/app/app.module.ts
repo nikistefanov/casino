@@ -26,7 +26,6 @@ import { ActiveCategoryService } from './services/active-category.service';
     ],
     imports: [
         BrowserModule,
-        RouterModule.forRoot([]),
         HttpClientModule,
         HttpModule
     ],
