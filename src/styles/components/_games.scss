@@ -77,7 +77,7 @@
 @media screen and (min-width: 575px) {
 
     .whg-games {
-        grid-template-columns: repeat(auto-fit, minmax($game-width, 1fr) );
+        grid-template-columns: repeat(auto-fit, minmax($game-card-width, 1fr) );
     }
 }
 
