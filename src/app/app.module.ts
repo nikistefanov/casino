@@ -12,6 +12,10 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { CardComponent } from './components/card/card.component';
 import { RibbonWrapperComponent } from './components/ribbon/ribbon-wrapper.component';
 import { ActiveCategoryService } from './services/active-category.service';
+import { NoResultsComponent } from './components/no-results/no-results.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { appRouting } from './app.routes';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
     declarations: [
@@ -22,12 +26,16 @@ import { ActiveCategoryService } from './services/active-category.service';
         RibbonComponent,
         RibbonWrapperComponent,
         LoaderComponent,
-        CardComponent
+        CardComponent,
+        HomeComponent,
+        NoResultsComponent,
+        NotFoundComponent
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
-        HttpModule
+        HttpModule,
+        appRouting
     ],
     providers: [ActiveCategoryService],
     bootstrap: [AppComponent]
