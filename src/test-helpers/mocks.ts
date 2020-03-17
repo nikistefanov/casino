@@ -1,5 +1,4 @@
 import { of } from 'rxjs';
-import { async } from 'rxjs/internal/scheduler/async';
 
 export const NEW_GAMES = [
     {
@@ -15,8 +14,7 @@ export const NEW_GAMES = [
     {
         categories: [
             'top',
-            'slots',
-            'new'
+            'slots'
         ],
         name: 'Aliens',
         image: '//stage.whgstage.com/scontent/images/games/NEALIENS.jpg',
@@ -42,15 +40,23 @@ export const OTHER_GAMES = [
         ],
         name: 'Baccarat',
         image: '//stage.whgstage.com/scontent/images/games/BSBACCARAT.jpg',
-        id: 'LEPABLOPICASSOSLOT'
+        id: 'BSBACCARAT'
     },
     {
         categories: [
             'virtual'
         ],
-        name: 'Craps',
-        image: '//stage.whgstage.com/scontent/images/games/BSCRAPS.jpg',
-        id: 'BSCRAPS'
+        name: 'Virtual World Cup',
+        image: '//stage.whgstage.com/scontent/images/games/NYXVIRTUALWORLDCUP.jpg',
+        id: 'NYXVIRTUALWORLDCUP'
+    },
+    {
+        categories: [
+            'virtual'
+        ],
+        name: 'Touchdown',
+        image: '//stage.whgstage.com/scontent/images/games/NYXTOUCHDOWN.jpg',
+        id: 'NYXTOUCHDOWN'
     }
 ];
 
@@ -66,47 +72,50 @@ export const JACKPOTS = [
 ];
 
 export const NEW_CATEGORY = {
+    id: 'new',
+    name: 'New Games'
+};
+
+export const TOP_CATEGORY = {
     id: 'top',
     name: 'Top Games'
 };
 
-export const CATEGORIES = [[
-    {
-        id: 'top',
-        name: 'Top Games'
-    },
-    {
-        id: 'new',
-        name: 'New Games'
-    },
-    {
-        id: 'slots',
-        name: 'Slots'
-    },
-    {
-        id: 'other',
-        name: 'Other'
-    }
-]];
+export const SLOTS_CATEGORY = {
+    id: 'slots',
+    name: 'Slots'
+};
+
+export const OTHERS_CATEGORY = {
+    id: 'others',
+    name: 'Others'
+};
+
+export const CATEGORIES = [
+    TOP_CATEGORY,
+    NEW_CATEGORY,
+    SLOTS_CATEGORY,
+    OTHERS_CATEGORY
+];
+
 
 export const rootServiceMock = {
-    jackpots: {
+    categories: {
         get() {
-            return of(JACKPOTS, async);
+            return of(CATEGORIES);
+        },
+        getDefault() {
+            return of(NEW_CATEGORY);
         }
     },
     games: {
         get() {
-            const games = [...NEW_GAMES, ...TOP_GAMES, ...OTHER_GAMES];
-            return of(games, async);
+            return of([...NEW_GAMES, ...TOP_GAMES, ...OTHER_GAMES]);
         }
     },
-    categories: {
+    jackpots: {
         get() {
-            return of(CATEGORIES, async);
-        },
-        getDefault() {
-            return of(NEW_CATEGORY, async);
+            return of(JACKPOTS);
         }
     }
 };

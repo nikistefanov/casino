@@ -78,22 +78,24 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     private filterGames(categoryId: string): IGame[] {
+        let fil = [];
         if (categoryId === OTHER_CATEGORY_ID) {
-            return this.games.filter(g => {
+            fil = this.games.filter(g => {
                 let categoryFound = false;
                 g.categories.forEach(gc => categoryFound = this.categories.some(c => c.id === gc));
 
                 return !categoryFound;
             });
+        } else {
+            fil = this.games.filter(g => {
+                if (g.categories && g.categories.indexOf(categoryId) > -1) {
+                    return true;
+                }
+
+                return false;
+            });
         }
 
-        const fil = this.games.filter(g => {
-            if (g.categories && g.categories.indexOf(categoryId) > -1) {
-                return true;
-            }
-
-            return false;
-        });
 
         return fil;
     }
